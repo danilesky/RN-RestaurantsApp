@@ -27,12 +27,16 @@ const CardsList = styled(ScrollView)`
   padding: ${(props) => props.theme.space[2]};
 `;
 
-const animeList = [
+const restaurantsList = [
   {
-    id: 0,
-    title: "Restaurant",
-    picture:
-      "https://www.collinsdictionary.com/images/full/restaurant_135621509.jpg",
+    id: 1,
+    name: "Some Restaurant",
+    photos: [
+      "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
+    ],
+    address: "100 some random street",
+    isOpenNow: true,
+    rating: 4,
   },
 ];
 
@@ -50,7 +54,7 @@ const RestaurantsScreen = () => {
         <RestaurantsWrapper>
           <Restaurants>
             <CardsList>
-              <SearchContent data={animeList} query={searchQuery} />
+              <SearchContent data={restaurantsList} query={searchQuery} />
             </CardsList>
           </Restaurants>
           <StatusBar style="auto" />

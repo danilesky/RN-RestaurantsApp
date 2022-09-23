@@ -3,12 +3,15 @@ import CardItem from "./CardItem";
 
 const SearchContent = ({ data, query }) => {
   return data.map((filteredData) => {
-    if (filteredData.title.toLowerCase().match(query.toLowerCase())) {
+    if (filteredData.name.toLowerCase().match(query.toLowerCase())) {
       return (
         <CardItem
           key={filteredData.id}
-          title={filteredData.title}
-          picture={filteredData.picture}
+          title={filteredData.name}
+          picture={filteredData.photos[0]}
+          address={filteredData.address}
+          rating={filteredData.rating}
+          isOpenNow={filteredData.isOpenNow}
         />
       );
     }
