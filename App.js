@@ -4,6 +4,8 @@ import { SafeAreaView, ScrollView, View } from "react-native";
 import Search from "./src/components/Search";
 import SearchContent from "./src/components/SearchContent";
 import styled from "styled-components";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./src/infrastructure/theme";
 
 const AppBodyWrapper = styled(View)`
   flex: 1;
@@ -17,12 +19,12 @@ const AppBody = styled(View)`
 
 const SearchBarWrapper = styled(View)`
   alignself: "stretch";
-  padding: 10px;
+  padding: ${(props) => props.theme.space[2]};
 `;
 
 const CardsList = styled(ScrollView)`
   alignself: "stretch";
-  padding: 10px;
+  padding: ${(props) => props.theme.space[2]};
 `;
 
 const animeList = [
@@ -38,20 +40,22 @@ export default function App() {
   const [searchQuery, setQuery] = useState("");
   return (
     <>
-      <SafeAreaView>
-        <SearchBarWrapper>
-          <Search setQuery={setQuery} />
-        </SearchBarWrapper>
-      </SafeAreaView>
+      <ThemeProvider theme={theme}>
+        <SafeAreaView>
+          <SearchBarWrapper>
+            <Search setQuery={setQuery} />
+          </SearchBarWrapper>
+        </SafeAreaView>
 
-      <AppBodyWrapper>
-        <AppBody>
-          <CardsList>
-            <SearchContent data={animeList} query={searchQuery} />
-          </CardsList>
-        </AppBody>
-        <StatusBar style="auto" />
-      </AppBodyWrapper>
+        <AppBodyWrapper>
+          <AppBody>
+            <CardsList>
+              <SearchContent data={animeList} query={searchQuery} />
+            </CardsList>
+          </AppBody>
+          <StatusBar style="auto" />
+        </AppBodyWrapper>
+      </ThemeProvider>
     </>
   );
 }

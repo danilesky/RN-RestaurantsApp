@@ -1,13 +1,13 @@
 import React from "react";
 import { Card } from "react-native-paper";
-import styled from "styled-components";
+import styled from "styled-components/native";
 
 const CardWrapper = styled(Card)`
-  marginbottom: 20px;
+  margin-bottom: ${(props) => props.theme.space[3]};
 `;
 
 const Cover = styled(Card.Cover)`
-  padding: 5px;
+  padding: ${(props) => props.theme.space[1]};
   backgroundcolor: "white";
 `;
 

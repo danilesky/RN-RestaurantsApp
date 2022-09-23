@@ -3,7 +3,6 @@ import { Searchbar } from "react-native-paper";
 import styled from "styled-components";
 
 const SearchBar = styled(Searchbar)`
-  color: "black";
   width: auto;
   alignself: "stretch";
 `;
