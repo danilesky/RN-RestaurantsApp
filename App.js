@@ -1,9 +1,29 @@
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
+import { SafeAreaView, ScrollView, View } from "react-native";
 import Search from "./src/components/Search";
-import CardItem from "./src/components/CardItem";
 import SearchContent from "./src/components/SearchContent";
+import styled from "styled-components";
+
+const AppBodyWrapper = styled(View)`
+  flex: 1;
+`;
+const AppBody = styled(View)`
+  flex: 1;
+  justifycontent: "center";
+  alignself: "stretch";
+  alignitems: "center";
+`;
+
+const SearchBarWrapper = styled(View)`
+  alignself: "stretch";
+  padding: 10px;
+`;
+
+const CardsList = styled(ScrollView)`
+  alignself: "stretch";
+  padding: 10px;
+`;
 
 const animeList = [
   {
@@ -19,44 +39,19 @@ export default function App() {
   return (
     <>
       <SafeAreaView>
-        <View style={styles.search}>
+        <SearchBarWrapper>
           <Search setQuery={setQuery} />
-        </View>
+        </SearchBarWrapper>
       </SafeAreaView>
-      <View style={styles.bodyWrapper}>
-        <View style={styles.body}>
-          <ScrollView style={styles.cardWrapper}>
+
+      <AppBodyWrapper>
+        <AppBody>
+          <CardsList>
             <SearchContent data={animeList} query={searchQuery} />
-          </ScrollView>
-        </View>
+          </CardsList>
+        </AppBody>
         <StatusBar style="auto" />
-      </View>
+      </AppBodyWrapper>
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "column",
-    backgroundColor: "#fff",
-    alignItems: "center",
-  },
-  bodyWrapper: {
-    flex: 1,
-  },
-  body: {
-    flex: 1,
-    justifyContent: "center",
-    alignSelf: "stretch",
-    alignItems: "center",
-  },
-  search: {
-    alignSelf: "stretch",
-    padding: 10,
-  },
-  cardWrapper: {
-    alignSelf: "stretch",
-    padding: 10,
-  },
-});

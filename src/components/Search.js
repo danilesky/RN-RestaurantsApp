@@ -1,6 +1,12 @@
 import React, { useState } from "react";
-import { StyleSheet } from "react-native";
 import { Searchbar } from "react-native-paper";
+import styled from "styled-components";
+
+const SearchBar = styled(Searchbar)`
+  color: "black";
+  width: auto;
+  alignself: "stretch";
+`;
 
 const Search = ({ setQuery }) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -11,20 +17,12 @@ const Search = ({ setQuery }) => {
   };
 
   return (
-    <Searchbar
+    <SearchBar
       placeholder="Search"
       onChangeText={onChangeSearch}
       value={searchQuery}
-      style={styles.search}
     />
   );
 };
 
-const styles = StyleSheet.create({
-  search: {
-    color: "black",
-    width: "auto",
-    alignSelf: "stretch",
-  },
-});
 export default Search;

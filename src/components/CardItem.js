@@ -1,24 +1,23 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import { Card } from "react-native-paper";
+import styled from "styled-components";
+
+const CardWrapper = styled(Card)`
+  marginbottom: 20px;
+`;
+
+const Cover = styled(Card.Cover)`
+  padding: 5px;
+  backgroundcolor: "white";
+`;
 
 const CardItem = ({ picture, title }) => {
   return (
-    <Card style={styles.card}>
-      <Card.Cover style={styles.cover} source={{ uri: picture }} />
+    <CardWrapper>
+      <Cover source={{ uri: picture }} />
       <Card.Title title={title} />
-    </Card>
+    </CardWrapper>
   );
 };
-
-const styles = StyleSheet.create({
-  card: {
-    marginBottom: 20,
-  },
-  cover: {
-    padding: 5,
-    backgroundColor: "white",
-  },
-});
 
 export default CardItem;
