@@ -5,6 +5,7 @@ import styled from "styled-components/native";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
+import { Spacer } from "../../../components/spacer/spacer.component";
 
 const CardWrapper = styled(Card)`
   margin-bottom: ${(props) => props.theme.space[3]};
@@ -43,6 +44,8 @@ const CardItem = ({ picture, title, address, rating, isOpenNow }) => {
         {ratingArray.map((item, i) => (
           <Star key={i} xml={star} />
         ))}
+        <Spacer way="left" magnitude="L" />
+        <Text>CLOSED TEMPORARILY</Text>
         {isOpenNow && <Open xml={open} width={25} height={25} />}
       </Rating>
       <Address>{address}</Address>
