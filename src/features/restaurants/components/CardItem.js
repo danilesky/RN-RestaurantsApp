@@ -1,38 +1,17 @@
 import React from "react";
-import { View } from "react-native";
-import { Card } from "react-native-paper";
-import styled from "styled-components/native";
-import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/typography.component";
 
-const CardWrapper = styled(Card)`
-  margin-bottom: ${(props) => props.theme.space[3]};
-  padding: ${(props) => props.theme.space[3]};
-`;
-
-const Cover = styled(Card.Cover)`
-  backgroundcolor: "white";
-`;
-const Title = styled(Card.Title)`
-  padding-left: 0;
-`;
-const Star = styled(SvgXml)`
-  padding-top: ${(props) => props.theme.space[2]};
-  width: 25px;
-  height: 25px;
-`;
-const Rating = styled(View)`
-  flex: 1;
-  flex-direction: row;
-  margin-top: -15px;
-  alignself: "stretch";
-`;
-const Open = styled(SvgXml)`
-  margin-left: auto;
-`;
+import {
+  CardWrapper,
+  Cover,
+  Title,
+  Rating,
+  Star,
+  Open,
+} from "./CardItem.styles";
 
 const CardItem = ({ picture, title, address, rating, isOpenNow }) => {
   const ratingArray = Array.from(new Array(Math.floor(rating)));
