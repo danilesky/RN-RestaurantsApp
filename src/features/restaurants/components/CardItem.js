@@ -1,11 +1,12 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import { Text } from "../../../components/typography/typography.component";
 
 const CardWrapper = styled(Card)`
   margin-bottom: ${(props) => props.theme.space[3]};
@@ -18,7 +19,6 @@ const Cover = styled(Card.Cover)`
 const Title = styled(Card.Title)`
   padding-left: 0;
 `;
-const Address = styled(Text)``;
 const Star = styled(SvgXml)`
   padding-top: ${(props) => props.theme.space[2]};
   width: 25px;
@@ -44,11 +44,12 @@ const CardItem = ({ picture, title, address, rating, isOpenNow }) => {
         {ratingArray.map((item, i) => (
           <Star key={i} xml={star} />
         ))}
-        <Spacer way="left" magnitude="L" />
-        <Text>CLOSED TEMPORARILY</Text>
+        <Spacer way="left" magnitude="XL">
+          <Text variant="error">CLOSED TEMPORARILY</Text>
+        </Spacer>
         {isOpenNow && <Open xml={open} width={25} height={25} />}
       </Rating>
-      <Address>{address}</Address>
+      <Text>{address}</Text>
     </CardWrapper>
   );
 };
