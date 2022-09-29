@@ -15,8 +15,14 @@ export const RestaurantsProvider = ({ children }) => {
     setIsLoading(true);
     restaurantsRequest()
       .then(restaurantsTransform)
-      .then((data) => setRestaurants(data))
-      .catch((err) => setError(err));
+      .then((data) => {
+        setIsLoading(false);
+        setRestaurants(data);
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setError(err);
+      });
   };
 
   useEffect(() => {

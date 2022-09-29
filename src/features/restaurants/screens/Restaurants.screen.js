@@ -1,6 +1,11 @@
 import React, { useContext, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, ScrollView, View } from "react-native";
+import {
+  ActivityIndicator,
+  SafeAreaView,
+  ScrollView,
+  View,
+} from "react-native";
 import Search from "../components/Search";
 import SearchContent from "../components/SearchContent";
 import styled from "styled-components";
@@ -28,10 +33,14 @@ const CardsList = styled(ScrollView)`
   padding: ${(props) => props.theme.space[2]};
 `;
 
+const Loading = styled(ActivityIndicator)`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
 const RestaurantsScreen = () => {
   const [searchQuery, setQuery] = useState("");
   const { restaurants, isLoading, error } = useContext(RestaurantsContext);
-  console.log(restaurants);
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -43,6 +52,7 @@ const RestaurantsScreen = () => {
 
         <RestaurantsWrapper>
           <Restaurants>
+            {isLoading && <Loading animating={true} />}
             <CardsList>
               <SearchContent data={restaurants} query={searchQuery} />
             </CardsList>
