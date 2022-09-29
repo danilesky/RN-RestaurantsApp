@@ -6,10 +6,10 @@ const SearchContent = ({ data, query }) => {
     if (filteredData.name.toLowerCase().match(query.toLowerCase())) {
       return (
         <CardItem
-          key={filteredData.id}
+          key={filteredData.name}
           title={filteredData.name}
           picture={filteredData.photos[0]}
-          address={filteredData.address}
+          address={filteredData.vicinity}
           rating={filteredData.rating}
           isOpenNow={filteredData.isOpenNow}
         />

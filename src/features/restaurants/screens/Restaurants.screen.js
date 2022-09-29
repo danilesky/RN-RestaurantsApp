@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, ScrollView, View } from "react-native";
 import Search from "../components/Search";
@@ -6,6 +6,7 @@ import SearchContent from "../components/SearchContent";
 import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../../../infrastructure/theme";
+import { RestaurantsContext } from "../services/restaurants/restaurants.context";
 
 const RestaurantsWrapper = styled(View)`
   flex: 1;
@@ -27,21 +28,10 @@ const CardsList = styled(ScrollView)`
   padding: ${(props) => props.theme.space[2]};
 `;
 
-const restaurantsList = [
-  {
-    id: 1,
-    name: "Some Restaurant",
-    photos: [
-      "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
-    ],
-    address: "100 some random street",
-    isOpenNow: true,
-    rating: 4,
-  },
-];
-
 const RestaurantsScreen = () => {
   const [searchQuery, setQuery] = useState("");
+  const { restaurants, isLoading, error } = useContext(RestaurantsContext);
+  console.log(restaurants);
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -54,7 +44,7 @@ const RestaurantsScreen = () => {
         <RestaurantsWrapper>
           <Restaurants>
             <CardsList>
-              <SearchContent data={restaurantsList} query={searchQuery} />
+              <SearchContent data={restaurants} query={searchQuery} />
             </CardsList>
           </Restaurants>
           <StatusBar style="auto" />
